@@ -1,11 +1,12 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import { Card, Button } from "antd";
+import {Link} from "react-router-dom"
 
 const blendIn = keyframes`
   from {
     opacity: 0;
-    transform: translateY(-1000px);
+    transform: translateY(-600px);
   }
   to {
     opacity: 1;
@@ -31,7 +32,7 @@ const ButtonContainer = styled.div`
 `;
 
 const StyledCard = styled(Card)`
-    animation: ${blendIn} 1.5s;
+    animation: ${blendIn} .5s;
 `;
 
 function StartScreen() {
@@ -43,7 +44,7 @@ function StartScreen() {
                         Start Game
                     </Button>
                     <Button type="primary" block>
-                        Create Character
+                        <Link to="/cc">Create Character</Link>
                     </Button>
                 </ButtonContainer>
             </StyledCard>
