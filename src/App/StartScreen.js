@@ -1,7 +1,9 @@
+// This will not be used probably but keep it anyway for reference
+
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import { Card, Button } from "antd";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const blendIn = keyframes`
   from {
@@ -32,7 +34,7 @@ const ButtonContainer = styled.div`
 `;
 
 const StyledCard = styled(Card)`
-    animation: ${blendIn} .5s;
+    animation: ${blendIn} 0.5s;
 `;
 
 function StartScreen() {
