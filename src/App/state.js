@@ -1,7 +1,7 @@
 const name = "global";
 
 // Constants
-const ACTION = "app/ACTION";
+const ACTION = "App/ACTION";
 
 // Reducer
 const initialState = {

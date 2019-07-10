@@ -4,6 +4,8 @@ import { Layout } from "antd";
 import Header from "./Header";
 import Sider from "./Sider";
 import styled from "styled-components";
+import { connect } from "react-redux";
+import { getSomeKey, commitAction } from "./state";
 
 const { Content, Footer } = Layout;
 
@@ -30,7 +32,7 @@ const Start = () => <div>Start</div>;
 
 const CC = () => <div>CC</div>;
 
-function App() {
+function App({ value, commitAction }) {
     return (
         <Router>
             <Layout>
@@ -39,6 +41,10 @@ function App() {
                     <Sider />
                     <MainContent>
                         <PaddingBox>
+                            <span>{value}</span>
+                            <button onClick={() => commitAction({ age: 10 })}>
+                                Dispatch an Action
+                            </button>
                             <Route path="/" exact component={Start} />
                             <Route path="/cc" component={CC} />
                         </PaddingBox>
@@ -50,4 +56,15 @@ function App() {
     );
 }
 
-export default App;
+const mapState = state => ({
+    value: getSomeKey(state)
+});
+
+const mapDispatch = {
+    commitAction
+};
+
+export default connect(
+    mapState,
+    mapDispatch
+)(App);
