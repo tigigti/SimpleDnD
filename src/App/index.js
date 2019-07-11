@@ -6,6 +6,7 @@ import Sider from "./Sider";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { getSomeKey, commitAction } from "./state";
+import CharacterCreator from "../CharacterCreator";
 
 const { Content, Footer } = Layout;
 
@@ -24,13 +25,11 @@ const MainContent = styled(Content)`
 `;
 
 const PaddingBox = styled.div`
-    padding: 0 16px;
+    padding: 16px;
     background-color: white;
 `;
 
 const Start = () => <div>Start</div>;
-
-const CC = () => <div>CC</div>;
 
 function App({ value, commitAction }) {
     return (
@@ -41,12 +40,12 @@ function App({ value, commitAction }) {
                     <Sider />
                     <MainContent>
                         <PaddingBox>
-                            <span>{value}</span>
+                            {/* <span>{value}</span>
                             <button onClick={() => commitAction({ age: 10 })}>
                                 Dispatch an Action
-                            </button>
+                            </button> */}
                             <Route path="/" exact component={Start} />
-                            <Route path="/cc" component={CC} />
+                            <Route path="/cc" component={CharacterCreator} />
                         </PaddingBox>
                     </MainContent>
                 </MainContainer>

@@ -1,12 +1,12 @@
 import React from "react";
-import { Layout, Menu, Icon } from "antd";
+import { Layout, Menu, Icon} from "antd";
 
 const Sidebar = Layout.Sider;
 const { SubMenu } = Menu;
 
 const Sider = () => {
     return (
-        <Sidebar width={200} style={{ background: "#fff" }} breakpoint="md" collapsedWidth={0}>
+        <Sidebar width={200} style={{ background: "#fff" }} breakpoint="xl" collapsedWidth={0}>
             <Menu mode="inline" style={{ height: "100%", borderRight: 0 }}>
                 <Menu.Item key="1">option1</Menu.Item>
                 <Menu.Item key="2">option2</Menu.Item>
