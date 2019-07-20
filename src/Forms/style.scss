@@ -1,0 +1,35 @@
+@import "../variables.scss";
+
+// Select
+.value-container {
+    border: 1px solid $grey;
+    border-radius: 8px;
+    padding: 4px 8px;
+    display: flex;
+    justify-content: space-between;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.select {
+    list-style-type: none;
+    margin: 4px 0 0 0;
+    padding: 0;
+    &.closed {
+        display: none;
+    }
+    .option {
+        background-color: $grey;
+        padding: 4px 8px;
+        margin-bottom: 4px;
+        border-radius: 8px;
+        color: white;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

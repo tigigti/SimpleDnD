@@ -1,32 +1,22 @@
-import React from "react";
-import { Layout, Menu } from "antd";
-import styled from "styled-components";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Head = Layout.Header;
-const Logo = styled.div`
-    height: 32px;
-    width: 96px;
-    background-color: lightgreen;
-    float: left;
-    margin: 16px 28px 16px 0;
-    border: 2px solid crimson;
-`;
-
 const Header = () => {
+    const [open, setOpen] = useState(false);
+
     return (
-        <Head>
-            {/* <Logo /> */}
-            <Menu theme="dark" mode="horizontal" style={{ lineHeight: "64px" }}>
-                <Menu.Item key="1">
-                    <Link to="/">Start Game</Link>
-                </Menu.Item>
-                <Menu.Item key="2">
-                    <Link to="/cc">Create Character</Link>
-                </Menu.Item>
-                <Menu.Item key="3">nav 3</Menu.Item>
-            </Menu>
-        </Head>
+        <div className="header-wrapper">
+            <div className="header">
+                <div className="brand">Brand</div>
+                <div className="toggler" onClick={() => setOpen(!open)}>
+                    Toggler
+                </div>
+                <div className={open ? "navbar open" : "navbar"}>
+                    <Link to="/">Home</Link>
+                    <Link to="CharacterCreator">Character Creator</Link>
+                </div>
+            </div>
+        </div>
     );
 };
 

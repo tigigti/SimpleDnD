@@ -1,103 +1,33 @@
 import React from "react";
-import { Row, Col, Input, Select as Sl, Card } from "antd";
-import styled from "styled-components";
-
-const { Option } = Sl;
-const Select = styled(Sl)`
-    width: 100%;
-`;
-
-const MarginBotRow = styled(Row)`
-    margin-bottom: 24px;
-`;
-
-const Score = styled.div`
-    margin-bottom: 8px;
-    text-align: center;
-    font-size: 18px;
-`;
-
-const Modifier = styled.div`
-    display: block;
-    border: 1px solid grey;
-    border-radius: 50%;
-    height: 40px;
-    width: 40px;
-    margin: auto;
-    text-align: center;
-    line-height: 40px;
-`;
+import { Select, Option } from "../Forms";
 
 const CharacterCreator = props => {
     return (
         <div>
-            <MarginBotRow gutter={16}>
-                <Col span={8}>
-                    <Input placeholder="Character Name" />
-                </Col>
-                <Col span={16}>
-                    <Row>
-                        <Col span={8}>Class</Col>
-                        <Col span={8}>Background</Col>
-                        <Col span={8}>Player Name</Col>
-                    </Row>
-                    <Row gutter={8}>
-                        <Col span={8}>
-                            <Select>
-                                <Option value="human">Human</Option>
-                                <Option value="elf">Elf</Option>
-                                <Option value="dwarf">Dwarf</Option>
-                                <Option value="gnome">Gnome</Option>
-                                <Option value="halfelf">Half-Elf</Option>
-                                <Option value="halfling">Halfling</Option>
-                                <Option value="halforc">Half-Orc</Option>
-                                <Option value="dragonborn">Dragonborn</Option>
-                                <Option value="tiefling">Tiefling</Option>
+            <div className="grid row-lg">
+                <div className="col" style={{ flex: 4 }}>
+                    Character Name
+                </div>
+                <div className="grid col" style={{ flex: 8 }}>
+                    <div className="grid row-lg">
+                        <div className="col">
+                            <Select label={"Class"}>
+                                <Option value="one">One</Option>
+                                <Option value="two">Two</Option>
+                                <Option value="three">Three</Option>
+                                <Option value="four">Four</Option>
                             </Select>
-                        </Col>
-                        <Col span={8}>Alignment</Col>
-                        <Col span={8}>Exp</Col>
-                    </Row>
-                </Col>
-            </MarginBotRow>
-            <Row gutter={16}>
-                <Col span={4}>
-                    <Card title="Strength">
-                        <Score>Your score</Score>
-                        <Modifier>+1</Modifier>
-                    </Card>
-                </Col>
-                <Col span={4}>
-                    <Card title="Dexterity">
-                        <Score>Your score</Score>
-                        <Modifier>+1</Modifier>
-                    </Card>
-                </Col>
-                <Col span={4}>
-                    <Card title="Constitution">
-                        <Score>Your score</Score>
-                        <Modifier>+1</Modifier>
-                    </Card>
-                </Col>
-                <Col span={4}>
-                    <Card title="Intelligence">
-                        <Score>Your score</Score>
-                        <Modifier>+1</Modifier>
-                    </Card>
-                </Col>
-                <Col span={4}>
-                    <Card title="Wisdom">
-                        <Score>Your score</Score>
-                        <Modifier>+1</Modifier>
-                    </Card>
-                </Col>
-                <Col span={4}>
-                    <Card title="Charisma">
-                        <Score>Your score</Score>
-                        <Modifier>+1</Modifier>
-                    </Card>
-                </Col>
-            </Row>
+                        </div>
+                        <div className="col">Background</div>
+                        <div className="col">Player Name</div>
+                    </div>
+                    <div className="grid row-lg">
+                        <div className="col">Race</div>
+                        <div className="col">Alignment</div>
+                        <div className="col">Exp</div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
