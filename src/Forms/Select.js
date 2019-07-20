@@ -8,10 +8,12 @@ const SelectContainer = posed.ul({
         staggerChildren: 50,
         height: "auto",
         transition: { duration: 200 },
+        applyAtStart: { display: "block" }
     },
     closed: {
         height: 0,
         afterChildren: true,
+        applyAtEnd: { display: "none" }
     }
 });
 
