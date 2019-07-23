@@ -16,9 +16,6 @@
     list-style-type: none;
     margin: 4px 0 0 0;
     padding: 0;
-    &.closed {
-        display: none;
-    }
     .option {
         background-color: $grey;
         padding: 4px 8px;

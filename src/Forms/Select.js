@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import posed from "react-pose";
 import { IconContext } from "react-icons";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
@@ -27,19 +27,31 @@ const OptionContainer = posed.li({
     }
 });
 
-const iconStyles = {
-    verticalAlign: "middle"
-};
-
 export const Select = ({ children, onChange, label }) => {
     const [value, setValue] = useState(children[0].props.children);
     const [open, setOpen] = useState(false);
+    const selectRef = useRef(null);
 
     const changeValue = (children, value) => {
-        console.log("Child with value " + value + " clicked");
         setValue(children);
         setOpen(!open);
         onChange && onChange(value);
+    };
+
+    // Make it behave more like an actual select
+    const clickOutside = e => {
+        if (!selectRef.current.contains(e.target)) {
+            setOpen(false);
+            document.removeEventListener("mousedown", clickOutside);
+        }
+    };
+
+    const toggleSelect = () => {
+        setOpen(!open);
+        if (!open) {
+            // Select has been opened
+            document.addEventListener("mousedown", clickOutside);
+        }
     };
 
     const options = React.Children.map(children, child => React.cloneElement(child, { clicked: changeValue }));
@@ -47,13 +59,13 @@ export const Select = ({ children, onChange, label }) => {
     return (
         <div>
             <span className="label">{label}</span>
-            <div className="value-container" onClick={() => setOpen(!open)}>
+            <div className="value-container" onClick={toggleSelect}>
                 <span>{value}</span>
-                <IconContext.Provider value={{ style: iconStyles }}>
+                <IconContext.Provider value={{ style: { verticalAlign: "middle" } }}>
                     <span>{(open && <FiChevronUp />) || <FiChevronDown />}</span>
                 </IconContext.Provider>
             </div>
-            <SelectContainer pose={open ? "open" : "closed"} className="select">
+            <SelectContainer ref={selectRef} pose={open ? "open" : "closed"} className="select">
                 {options}
             </SelectContainer>
         </div>
