@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import posed from "react-pose";
 import { IconContext } from "react-icons";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
@@ -51,13 +51,16 @@ export const Select = ({ children, onChange, label }) => {
         if (!open) {
             // Select has been opened
             document.addEventListener("mousedown", clickOutside);
+            return;
         }
+        // Select has been closed
+        document.removeEventListener("mousedown", clickOutside);
     };
 
     const options = React.Children.map(children, child => React.cloneElement(child, { clicked: changeValue }));
 
     return (
-        <div>
+        <div ref={selectRef}>
             <span className="label">{label}</span>
             <div className="value-container" onClick={toggleSelect}>
                 <span>{value}</span>
@@ -65,7 +68,7 @@ export const Select = ({ children, onChange, label }) => {
                     <span>{(open && <FiChevronUp />) || <FiChevronDown />}</span>
                 </IconContext.Provider>
             </div>
-            <SelectContainer ref={selectRef} pose={open ? "open" : "closed"} className="select">
+            <SelectContainer pose={open ? "open" : "closed"} className="select">
                 {options}
             </SelectContainer>
         </div>

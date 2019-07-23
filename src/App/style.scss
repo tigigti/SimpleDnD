@@ -33,6 +33,7 @@
         width: 0;
         background-color: $grey;
         transition: width 0.2s;
+        z-index: 99999;
         a {
             width: 100%;
             text-align: center;
