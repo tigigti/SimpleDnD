@@ -35,13 +35,22 @@
 }
 
 .cube {
-    display: inline-block;
-    height: 42px;
-    width: 42px;
-    line-height: 42px;
-    text-align: center;
-    vertical-align: middle;
-    margin: 0 12px;
+    height: 36px;
+    width: 36px;
     border: 1px solid $grey;
     border-radius: 4px;
+    text-align: center;
+    line-height: 36px;
+    vertical-align: middle;
+    margin: auto;
+    &.rolling {
+        animation-name: rotate;
+        animation-duration: .5s;
+    }
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(720deg);
+    }
 }
