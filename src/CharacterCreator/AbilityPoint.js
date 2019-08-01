@@ -1,11 +1,11 @@
 import React from "react";
 
-const AbilityPoint = ({ children }) => {
+const AbilityPoint = ({ ability, value, modifier }) => {
     return (
         <div className="ap-container">
-            <span className="ability">{children}</span>
-            <span className="value">Value</span>
-            <span className="modifier">+1</span>
+            <span className="ability">{ability}</span>
+            <span className="value">{value}</span>
+            <span className="modifier">{modifier < 0 ? "- " + modifier : "+ " + modifier}</span>
         </div>
     );
 };

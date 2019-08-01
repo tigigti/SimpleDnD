@@ -3,11 +3,19 @@ import { connect } from "react-redux";
 import { Select, Option } from "../Forms";
 import Rolls from "./Rolls";
 import "./style.scss";
-import { getRolledPoints, rollPoints } from "./state";
+import { getRolledPoints, rollPoints, assignValues, getAssignedValues, getModifier, setModifier } from "./state";
 
-const CharacterCreator = ({ rolledPoints, rollPoints }) => {
+const CharacterCreator = ({ rolledPoints, rollPoints, assignedValues, assignValues, setModifier, modifier }) => {
+    const changedRace = value => {
+        switch (value) {
+            case "human":
+                setModifier([1, 1, 1, 1, 1, 1]);
+        }
+    };
+
     return (
         <div>
+            <h1>Character Creator</h1>
             <div className="grid row-md">
                 <div className="col input-field" style={{ flex: 4 }}>
                     <label>Character Name</label>
@@ -34,9 +42,16 @@ const CharacterCreator = ({ rolledPoints, rollPoints }) => {
                     </div>
                     <div className="grid row-md">
                         <div className="col">
-                            <Select label="Race">
+                            <Select label="Race" onChange={value => changedRace(value)}>
                                 <Option value="human">Human</Option>
+                                <Option value="dragonborn">Dragonborn</Option>
+                                <Option value="dwarf">Dwarf</Option>
                                 <Option value="elf">Elf</Option>
+                                <Option value="gnome">Gnome</Option>
+                                <Option value="halfelf">Half-Elf</Option>
+                                <Option value="halfling">Halfling</Option>
+                                <Option value="halforc">Half-Orc</Option>
+                                <Option value="tiefling">Tiefling</Option>
                             </Select>
                         </div>
                         <div className="col">
@@ -52,17 +67,27 @@ const CharacterCreator = ({ rolledPoints, rollPoints }) => {
                     </div>
                 </div>
             </div>
-            <Rolls values={rolledPoints} roll={rollPoints} />
+            <Rolls
+                values={rolledPoints}
+                roll={rollPoints}
+                assignValues={assignValues}
+                assignedValues={assignedValues}
+                modifier={modifier}
+            />
         </div>
     );
 };
 
 const mapState = state => ({
-    rolledPoints: getRolledPoints(state)
+    rolledPoints: getRolledPoints(state),
+    assignedValues: getAssignedValues(state),
+    modifier: getModifier(state)
 });
 
 const mapDispatch = {
-    rollPoints
+    rollPoints,
+    assignValues,
+    setModifier
 };
 
 export default connect(

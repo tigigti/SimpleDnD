@@ -14,11 +14,13 @@
     border-bottom-left-radius: 4px;
     .ability {
         font-weight: bold;
+        border-bottom: 2px solid $accent;
     }
     .value {
         flex: 1;
         display: flex;
         align-items: center;
+        font-size: 2em;
     }
     .modifier {
         border: 1px solid $grey;
@@ -47,10 +49,49 @@
         animation-name: rotate;
         animation-duration: .5s;
     }
+    &:hover {
+        cursor: pointer;
+        background-color: $grey;
+        color: white;
+    }
 }
 
 @keyframes rotate {
     100% {
         transform: rotate(720deg);
+    }
+}
+
+.assign-menu {
+    position: fixed;
+    left: 5%;
+    right: 5%;
+    top: 20%;
+    display: flex;
+    flex-direction: column;
+    background-color: $grey;
+    min-width: 300px;
+    z-index: 99999;
+    border-radius: 8px;
+    @media screen and (min-width: $md){
+        left: 20%;
+        right: 20%;
+    }
+    @media screen and (min-width: $lg){
+        left: 35%;
+        right: 35%;
+    }
+    .assign-option {
+        padding: 8px 0;
+        border-bottom: 2px solid white;
+        width: 100%;
+        text-align: center;
+        &:hover {
+            cursor: pointer;
+            color: white;
+        }
+        &:last-child {
+            border-bottom: none;
+        }
     }
 }

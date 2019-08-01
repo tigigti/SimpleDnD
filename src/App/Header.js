@@ -7,7 +7,7 @@ const Header = () => {
     return (
         <div className="header-wrapper">
             <div className="header">
-                <div className="brand">Brand</div>
+                <div className="brand">Simple DnD</div>
                 <div className="toggler" onClick={() => setOpen(!open)}>
                     Toggler
                 </div>
