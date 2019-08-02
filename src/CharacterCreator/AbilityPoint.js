@@ -4,7 +4,7 @@ const AbilityPoint = ({ ability, value, modifier }) => {
     return (
         <div className="ap-container">
             <span className="ability">{ability}</span>
-            <span className="value">{value}</span>
+            <span className="value">{value+modifier}</span>
             <span className="modifier">{modifier < 0 ? "- " + modifier : "+ " + modifier}</span>
         </div>
     );

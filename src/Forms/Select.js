@@ -5,7 +5,7 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
 const SelectContainer = posed.ul({
     open: {
-        staggerChildren: 50,
+        staggerChildren: 20,
         height: "auto",
         transition: { duration: 200 },
         applyAtStart: { display: "block" }
